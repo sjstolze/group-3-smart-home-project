@@ -1,5 +1,6 @@
 <html>
 <?php
+session_start();
 //This line prevents the user from just typing in /homepage.php in their browser, they must log in
 if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
   header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
