@@ -5,8 +5,8 @@ session_start();
 if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
   header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
   
-	echo 'Username: ' . htmlspecialchars($_POST["username"]) . "<br>";
-	echo 'Email: ' . htmlspecialchars($_POST["email"]);
+	echo 'Username: ' . htmlspecialchars($_SESSION["username"]) . "<br>";
+	echo 'Email: ' . htmlspecialchars($_SESSION["email"]);
 	echo "<br>";
 	echo "<br>";
 ?>
