@@ -52,5 +52,11 @@ function runClient(){
 		<div id = "foo"><div>
 		</div>
 	</div>
+	
+	<form name="newaccount" action="<?php print(dirname($_SERVER['SCRIPT_NAME']) . "/login.php")?>" method="POST">
+    <input type="submit" value="logout">
+    <input type="hidden" name="logout" value="true">  
+  
+</form>
 </body>
 </html>
