@@ -8,7 +8,7 @@ session_start();
 <?php
 
   $accounts = &json_decode(file_get_contents("accounts.json"));
-  $valid_login = false;
+  $invalid_login = false;
   if($_POST['login'] == 'true')
   { 
     $len = count($accounts);
@@ -25,7 +25,7 @@ session_start();
       }
       
     }
-    $valid_login = true;
+    $invalid_login = true;
   }
   if($_POST['logout'] == 'true')
   {
@@ -86,7 +86,7 @@ if (x != y)
 </form>
 
 <?php
-  if($valid_login == true){
+  if($invalid_login == true){
     $message = "Invalid username or password<br><br>";
     print $message;
 }
