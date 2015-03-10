@@ -8,7 +8,7 @@ session_start();
 <?php
 
   $accounts = &json_decode(file_get_contents("accounts.json"));
-  
+  $valid_login = false;
   if($_POST['login'] == 'true')
   { 
     $len = count($accounts);
@@ -20,11 +20,12 @@ session_start();
         {
           $_SESSION['username'] = $_POST['username'];
           $_SESSION['email'] = $accounts[$i]->email;
-          header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/homepage.php");
+          header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/ajax.php");
         }
       }
       
     }
+    $valid_login = true;
   }
   if($_POST['logout'] == 'true')
   {
@@ -64,7 +65,7 @@ if (x != y)
 }
 </script>
 
-<link rel="stylesheet" href="login_stylesheet.css">
+<link rel="stylesheet" href="homepage_stylesheet.css">
 
 
 
@@ -83,6 +84,13 @@ if (x != y)
   <input type="submit" value="submit">
   <input type="hidden" name="login" value="true">
 </form>
+
+<?php
+  if($valid_login == true){
+    $message = "Invalid username or password<br><br>";
+    print $message;
+}
+?>
 
 <div id="h4">Create new account:</div><br>
 <form name="newaccount" action="<?php print($_SERVER['SCRIPT_NAME'])?>" onsubmit="return validateForm()" method="POST">
