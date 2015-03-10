@@ -20,7 +20,7 @@ session_start();
         {
           $_SESSION['username'] = $_POST['username'];
           $_SESSION['email'] = $accounts[$i]->email;
-          header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/ajax.php");
+          header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/homepage.php");
         }
       }
       
