@@ -10,6 +10,7 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
 	echo 'Username: ' . htmlspecialchars($_SESSION["username"]) . "<br>";
 	echo 'Email: ' . htmlspecialchars($_SESSION["email"]);
 	echo "<br>";
+	print('<a href=' . dirname($_SERVER['SCRIPT_NAME']) . '/edit_profile.php>Edit Account</a>');
 	echo "<br>";
 ?>
 <script>

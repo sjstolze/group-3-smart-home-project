@@ -31,6 +31,7 @@ session_start();
   {
     unset($_SESSION['username']);
     unset($_SESSION['email']);
+    print("UNSETTTT");
   }
   else
   {
