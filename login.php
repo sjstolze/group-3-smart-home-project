@@ -58,7 +58,7 @@ function validateForm()
 		}
 	var j = document.forms["newaccount"]["email"].value;
 	var atpos = j.indexOf("@");
-    var dotpos = j.lastIndexOf(".");
+    	var dotpos = j.lastIndexOf(".");
 		if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=j.length) {
 			alert("Not a valid e-mail address");
 			return false;
