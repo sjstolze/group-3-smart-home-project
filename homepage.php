@@ -15,7 +15,7 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
 ?>
 <script>
 function runClient(){
-	document.getElementById('temp').style.display = "inline";
+	document.getElementById("temp").style.display = "block";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -37,12 +37,12 @@ function runClient(){
 </style>
 <body>
 	<button onclick = "runClient();">Find new devices...</button>
-	<div id = "foo"><div>
+	<div id = "foo"></div>
 	
-	<div class="red">
-	DEVICE MANAGER
-		<div class = "blue" id = "temp" style = "display: none">
-		Devices Found
+	<div class="red" id = "temp" style = "display: none">
+	GENERIC DEVICE MANAGER
+		<div class = "blue">
+		Devices Found...
 			<ol class = "a">
 				<li>Generic Device 1</li>
 					<ol class = "b">
