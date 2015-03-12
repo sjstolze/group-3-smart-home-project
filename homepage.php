@@ -6,7 +6,7 @@
 //This line prevents the user from just typing in /homepage.php in their browser, they must log in
 if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
   header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
-  
+	
 	echo 'Username: ' . htmlspecialchars($_SESSION["username"]) . "<br>";
 	echo 'Email: ' . htmlspecialchars($_SESSION["email"]);
 	echo "<br>";
@@ -14,6 +14,12 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
 	echo "<br>";
 ?>
 <script>
+function runServer(){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "runServer.php", true);
+	xmlhttp.send();
+}
+runServer();
 function runClient(){
 	document.getElementById("temp").style.display = "block";
 	var xmlhttp = new XMLHttpRequest();
