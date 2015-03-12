@@ -15,6 +15,7 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
 ?>
 <script>
 function runClient(){
+	document.getElementById('temp').style.display = "inline";
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -35,27 +36,28 @@ function runClient(){
 	ol.b {list-style-type: square;}
 </style>
 <body>
+	<button onclick = "runClient();">Find new devices...</button>
+	<div id = "foo"><div>
+	
 	<div class="red">
-		DEVICE MANAGER
-		<div class = "blue">
-		Devices
+	DEVICE MANAGER
+		<div class = "blue" id = "temp" style = "display: none">
+		Devices Found
 			<ol class = "a">
-				<li>Device 1</li>
+				<li>Generic Device 1</li>
 					<ol class = "b">
-						<li>Function 1</li>
-						<li>Function 2</li>
-						<li>Function 3</li>
+						<li>Generic Function 1</li>
+						<li>Generic Function 2</li>
+						<li>Generic Function 3</li>
 					</ol>
-				<li>Device 2</li>
-				<li>Device 3</li>
+				<li>Generic Device 2</li>
+				<li>Generic Device 3</li>
 			</ol>
-		<button onclick = "runClient();">Find new devices...</button>
-		<div id = "foo"><div>
 		</div>
 	</div>
 	
 	<form name="logout_form" action="<?php print(dirname($_SERVER['SCRIPT_NAME']) . "/login.php")?>" method="POST">
-    		<input type="submit" value="logout">
+    		<input type="submit" value="Logout">
     		<input type="hidden" name="logout" value="true">  
   
 </form>
