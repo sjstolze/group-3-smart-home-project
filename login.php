@@ -58,14 +58,18 @@ function validateForm()
 		}
 	var j = document.forms["newaccount"]["email"].value;
 	var atpos = j.indexOf("@");
-    	var dotpos = j.lastIndexOf(".");
+    var dotpos = j.lastIndexOf(".");
 		if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=j.length) {
 			alert("Not a valid e-mail address");
 			return false;
 		}
 	var x=document.forms["newaccount"]["password"].value;
 	var y=document.forms["newaccount"]["password2"].value;
-		if (x != y)
+		if (x == null || x == "") {
+			alert("Password must be filled out");
+			return false;
+		}
+		else if (x != y)
 		{
 			alert("Mismatching passwords");
 			document.getElementById("1").innerHTML = "PASSWORDS DON'T MATCH";
