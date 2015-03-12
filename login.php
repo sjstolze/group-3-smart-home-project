@@ -6,7 +6,6 @@ session_start();
 <body>
 
 <?php
-
   $accounts = &json_decode(file_get_contents("accounts.json"));
   $invalid_login = false;
   if($_POST['login'] == 'true')
@@ -38,7 +37,6 @@ session_start();
     {      
       $accounts[] = $_POST;
     }
-
     $fh = fopen("accounts.json", 'w');
     if($fh === false)
       print("Failed to open accounts.json for writing.");
@@ -53,15 +51,26 @@ session_start();
 <script>
 function validateForm()
 {
-var x=document.forms["newaccount"]["password"].value;
-var y=document.forms["newaccount"]["password2"].value;
-if (x != y)
-  {
-  alert("Mismatching passwords");
-  document.getElementById("1").innerHTML = "PASSWORDS DON'T MATCH";
-  return false;
-  }
-
+	var i = document.forms["newaccount"]["username"].value;
+		if (i == null || i == "") {
+			alert("Username must be filled out");
+			return false;
+		}
+	var j = document.forms["newaccount"]["email"].value;
+	var atpos = j.indexOf("@");
+    var dotpos = j.lastIndexOf(".");
+		if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=j.length) {
+			alert("Not a valid e-mail address");
+			return false;
+		}
+	var x=document.forms["newaccount"]["password"].value;
+	var y=document.forms["newaccount"]["password2"].value;
+		if (x != y)
+		{
+			alert("Mismatching passwords");
+			document.getElementById("1").innerHTML = "PASSWORDS DON'T MATCH";
+			return false;
+		}
 }
 </script>
 
@@ -98,7 +107,7 @@ if (x != y)
   Email Address: <input type="text" name="email"><br>
   Password: <input type="password" name="password"><br>
   Confirm Password: <input type="password" name="password2"><p id="1"></p><br>
-  <input type="submit" value="submit">  
+  <input type="submit" value="submit">
   
 </form>
 </h3>
