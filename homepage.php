@@ -29,8 +29,10 @@ function runClient(){
 			document.getElementById("foo").innerHTML = output;
 			if(output != 0)
 				document.getElementById("temp").style.display = "block";
-			else
+			else{
+				document.getElementById("temp").style.display = "none";
 				alert("Server Timed Out. Please refresh page.");
+			}
 		}
 	}
 	xmlhttp.open("POST", "runClient.php", true);
