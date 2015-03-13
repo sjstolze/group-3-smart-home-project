@@ -27,7 +27,7 @@ while 1:
 
     # Read bytes from socket
 	sentence = connectionSocket.recv(1024)
-	print 'Received "', sentence, '" from Client...'
+	print 'Received a ping the from Client...'
 	
 	deviceMessage = "There are 3 devices in your area"
 
