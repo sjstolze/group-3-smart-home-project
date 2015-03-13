@@ -1,3 +1,6 @@
 # group-3-smart-home-project
 
-Once we've got the CSS down, we can make a pull request to the master and add these files officially. So, play around with the CSS, experiment with some cool designs, and update the code to let us see.
+To use this code, simply place all of the files into the same folder on a server and access it from a browser.
+
+Alternatively, we have a running copy at http://csce.uark.edu/~slmadey/login.php
+
