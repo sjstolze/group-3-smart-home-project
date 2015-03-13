@@ -2,7 +2,6 @@
 <html>
 <?php
 session_start();
-
   $accounts = &json_decode(file_get_contents("accounts.json"));
   $change = false;
   if(strlen($_POST['username']) != 0)
@@ -70,7 +69,6 @@ session_start();
       
     }
   }
-
 ?>
 <body onLoad="setupLinks()">
 
@@ -86,7 +84,6 @@ session_start();
       };
       
       var mail =  document.getElementById("edit_email");
-
       mail.onclick = function(){
           document.getElementById("mail_edit").innerHTML = "New Email:<input type=\"text\" name=\"email\"><input type=\"submit\" value=\"submit\">"; 
           return false;};
@@ -99,7 +96,6 @@ session_start();
   }
   </script>
 <?php
-
   //This line prevents the user from just typing in /homepage.php in their browser, they must log in
   if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
     header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
