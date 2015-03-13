@@ -21,12 +21,16 @@ function runServer(){
 }
 runServer();
 function runClient(){
-	document.getElementById("temp").style.display = "block";
 	var xmlhttp = new XMLHttpRequest();
+	var output = 0;
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			var output = JSON.parse(xmlhttp.responseText);
+			output = JSON.parse(xmlhttp.responseText);
 			document.getElementById("foo").innerHTML = output;
+			if(output != 0)
+				document.getElementById("temp").style.display = "block";
+			else
+				alert("Server Timed Out. Please refresh page.");
 		}
 	}
 	xmlhttp.open("POST", "runClient.php", true);
