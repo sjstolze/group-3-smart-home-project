@@ -6,25 +6,46 @@ session_start();
 <body>
 
 <?php
-  $accounts = &json_decode(file_get_contents("accounts.json"));
+  //$accounts = &json_decode(file_get_contents("accounts.json"));
+  
+  $servername = "localhost";
+  $username = "root";
+  $password = "kohSha4E";
+  $dbname = "smarthome";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  } 
+  
+  
   $invalid_login = false;
   if($_POST['login'] == 'true')
   { 
-    $len = count($accounts);
-    for($i=0; $i < $len;$i++)
+    $sql = "SELECT Username , Password, email FROM users";
+    $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) 
     {
-      if(strcmp($accounts[$i]->username,$_POST['username']) == 0)
+      if(strcmp($row["Username"],$_POST['username']) == 0)
       {
-        if(strcmp($accounts[$i]->password,$_POST['password']) == 0)
+        if(strcmp($row["Password"],$_POST['password']) == 0)
         {
           $_SESSION['username'] = $_POST['username'];
-          $_SESSION['email'] = $accounts[$i]->email;
+          $_SESSION['email'] = $row["email"];
           header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/homepage.php");
         }
       }
-      
-    }
-    $invalid_login = true;
+    } 
+  }
+  else {
+     echo "0 results";
+  }
+  $invalid_login = true;
+  
   }
   if($_POST['logout'] == 'true')
   {
@@ -35,15 +56,12 @@ session_start();
   {
     if(strlen($_POST['password'])!=0 && strlen($_POST['username'])!=0 && strlen($_POST['email'])!=0 )
     {      
-      $accounts[] = $_POST;
-    }
-    $fh = fopen("accounts.json", 'w');
-    if($fh === false)
-      print("Failed to open accounts.json for writing.");
-    else
-    {
-      fwrite($fh, json_encode($accounts));
-      fclose($fh);
+      $sql = "INSERT INTO users (Username, Password, email) VALUES ('". $_POST['username'] . "', '". $_POST['password'] . "', '" . $_POST['email'] ."')";
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
     }
   }
   ?>
