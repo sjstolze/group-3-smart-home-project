@@ -1,5 +1,6 @@
 # group-3-smart-home-project
 
-Hello world
+To use this code, simply place all of the files into the same folder on a server and access it from a browser.
 
-We're doing stuff!
+Alternatively, we have a running copy at http://csce.uark.edu/~slmadey/login.php
+

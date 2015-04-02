@@ -14,7 +14,7 @@ cook_time = 1
 
 
 deviceSocket = socket(AF_INET, SOCK_STREAM)
-deviceSocket.settimeout(20)
+deviceSocket.settimeout(200)
 deviceSocket.bind(('', serverPort))
 deviceSocket.listen(1)
 
@@ -24,11 +24,11 @@ while 1:
 	connectionSocket, addr = deviceSocket.accept()
 	sentence = connectionSocket.recv(1024)
 	print 'Received "', sentence, '" from Client...'
-
+        message = ''
 
         # first access case	
-        if sentence == "ToasterDevice.py":
-                message = "ON/OFF up_cook_temp down_cook_temp"  
+        if sentence == name:
+                message = "ON/OFF up_cook_temp down_cook_temp toast"  
 
 
 	if sentence == "ON/OFF":
@@ -51,10 +51,10 @@ while 1:
                       cook_temp = "medium"
                       message = "Cooking temperature is now " + cook_temp
                 elif cook_temp == "medium":
-                      cook_temp == "high"
+                      cook_temp = "high"
                       message = "Cooking temperature is now " + cook_temp
                 else:
-                      cook_temp == "high"
+                      cook_temp = "high"
                       message = "Toaster is already at max temperature."
 
         if sentence == "down_cook_temp":
@@ -62,10 +62,10 @@ while 1:
                       cook_temp = "medium"
                       message = "Cooking temperature is now " + cook_temp
                 elif cook_temp == "medium":   
-                      cook_temp == "low"
+                      cook_temp = "low"
                       message = "Cooking temperature is now " + cook_temp
                 else:
-                      cook_temp == "low"
+                      cook_temp = "low"
                       message = "Toaster is already at lowest temperature." 
 
 

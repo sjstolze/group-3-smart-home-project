@@ -7,12 +7,13 @@ serverPort = 1401
 
 # device-specific variables can be instantiated here
 status = "Off"
+name = "Super Fishtank"
 food = 10
 temperature = 75
 electricity = 0
 
 deviceSocket = socket(AF_INET, SOCK_STREAM)
-deviceSocket.settimeout(20)
+deviceSocket.settimeout(200)
 deviceSocket.bind(('', serverPort))
 deviceSocket.listen(1)
 
@@ -22,6 +23,10 @@ while 1:
 	connectionSocket, addr = deviceSocket.accept()
 	sentence = connectionSocket.recv(1024)
 	print 'Received "', sentence, '" from Client...'
+
+        if sentence == name:
+                message = "ON/OFF feed refill_secret up_temp down_temp light_status food_status temp_status electricity"
+        
 	
 	if sentence == "ON/OFF":
 		if status == "ON":
@@ -36,6 +41,7 @@ while 1:
 		if food > 0:
 			message = "Currently feeding fish..."
 			electricity += 5
+			food -= 1;
 		else:
 			message = "You have no more fish food left. "
 	# make sure not to feed your fish too much
@@ -47,11 +53,11 @@ while 1:
 	if sentence == "up_temp":
 		temperature += 5
 		electricity += 5
-		message = "Your fish tank is currently " + temperature + " degrees Fahrenheit."
-	else if sentence == "down_temp":
+		message = "Your fish tank is currently " + str(temperature) + " degrees Fahrenheit."
+	elif sentence == "down_temp":
 		temperature -= 5
 		electricity += 5
-		message = "Your fish tank is currently " + temperature + " degrees Fahrenheit."
+		message = "Your fish tank is currently " + str(temperature) + " degrees Fahrenheit."
 	#two commands to increase/decrease temperature
 	
 	if sentence == "light_status":
@@ -59,15 +65,15 @@ while 1:
 	#status update of light
 	
 	if sentence == "food_status":
-		message = "You currently have " + food + "fish foods available."
+		message = "You currently have " + str(food) + " fish foods available."
 	#fish food status update
 	
 	if sentence == "temp_status":
-		message = "Your fish tank is currently " + temperature + " degrees Fahrenheit."
+		message = "Your fish tank is currently " + str(temperature) + " degrees Fahrenheit."
 	#allows status update of temperature
 
 	if sentence == "electricity":
-		message = "You have used up " + electricity + " electricities."
+		message = "You have used up " + str(electricity) + " electricities."
 	
 	connectionSocket.send(message)
 	connectionSocket.close()
