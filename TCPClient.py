@@ -14,7 +14,7 @@ for x in range(len(sys.argv)):
         sentence = sentence + sys.argv[x] + ' '
 sentence = sentence.strip()
 # sending whatever to server, basically pinging it
-
+#print sentence
 # Choose SOCK_STREAM, which is TCP
 clientSocket = socket(AF_INET, SOCK_STREAM)
 
@@ -26,7 +26,7 @@ clientSocket.send(sentence)
 
 # Receive response from server via socket
 modifiedSentence = clientSocket.recv(1024)
-
+#print modifiedSentence
 mod = modifiedSentence.split(" ")
 for word in mod:
     print word
