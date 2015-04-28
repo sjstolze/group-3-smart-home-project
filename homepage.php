@@ -20,12 +20,16 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['email']))
       die("Connection failed: " . $conn->connect_error);
   } 
   echo '<div class="black" id="account_info">';
-  echo '<h4><b>Your Account Information:</b></h4>';
+  echo '<b>Your Account Information:</b>';
+  echo '<br>';
+  echo '<br>';
 	echo 'Username: ' . htmlspecialchars($_SESSION["username"]) . "<br>";
 	echo 'Email: ' . htmlspecialchars($_SESSION["email"]);
-	echo "<br><br>";
-	
+	echo "<br>";
+	echo '</div>';
 	//print('<a href=' . dirname($_SERVER['SCRIPT_NAME']) . '/edit_profile.php>Edit Account</a>');
+	echo "<br>";
+
 
 //code for adding device to database
 if(isset($_POST['add']) && $_POST['add'] == 'true')
@@ -95,7 +99,6 @@ elseif(isset($_POST['del']) && $_POST['del'] == 'true' && $_POST['devicename'] !
   
 }
 
-echo '</div>';
 
 	
 
@@ -140,11 +143,9 @@ function runClient(func, port, device, username){
 };
 </script>
 
-<link rel="stylesheet" href="homepage_stylesheet.css">
-
 <style>
   div.black {border-style: solid; border-color: black; border-width: 5px;}
-	div.red {border-style: solid; border-color: #990000; border-width: 10px;}
+	div.red {border-style: solid; border-color: red; border-width: 10px;}
 	div.blue {border-style: groove; border-color: blue; border-width: 5px;}
 	div.indent {text-indent: 50px;}
 	ol.a {list-style-type: circle;}
@@ -152,8 +153,8 @@ function runClient(func, port, device, username){
 </style>
 <body>
 	<br>
-	<div class = "black" id = add_device_box">
-	<h4><b>Add a Device to Your SmartHome System:</b></h4>
+	<div class="black" id = add_device_box">
+	<b>Add a Device to Your SmartHome System:</b><br><br>
 	<form name="device_add" action="<?php print($_SERVER['SCRIPT_NAME'])?>" method="POST">
         Device Name: <input type="text" name="devicename"><br>
         Port Number: <input type="text" name="portnum"><br>
@@ -161,10 +162,6 @@ function runClient(func, port, device, username){
         <input type="hidden" name="add" value="true">
 	</form>
 	</div>
-	<br>
-
-	<div class = "black">
-	<h4><b>Your SmartHome Devices:</b></h4>
 	<?php
 	#echo "query:";
 	$sql = "SELECT device, port FROM devices WHERE username='" . $_SESSION['username'] ."'" ;
@@ -192,13 +189,12 @@ function runClient(func, port, device, username){
     } 
   }
 	?>
-	</div>
 	<div id="test"></div>
 	<div id="test2"></div>
 	<div id="test3"></div>
 	<br>
 	<div class="black" id = add_device_box">
-	<h4><b>Remove a Device from Your SmartHome System:</b></h4>
+	<b>Remove a Device to Your SmartHome System:</b><br><br>
 	<form name="device_remove" action="<?php print($_SERVER['SCRIPT_NAME'])?>" method="POST">
         Delete Device Name: <input type="text" name="devicename"><br>
         <input type="submit" value="Remove Device"><br><br>
