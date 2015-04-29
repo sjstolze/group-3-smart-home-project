@@ -1,0 +1,95 @@
+/* Homepage Stylesheet */
+
+body {
+ #background-image: -webkit-radial-gradient(center center, circle cover, #999999 5%, #000000 90%); 
+ #background: radial-gradient(closest-side at 50% 75%, #444444 5%, #000000 110%);
+ background: linear-gradient(to right, #000000 , #444444);
+#background: -moz-linear-gradient(red, blue);
+ #background: -moz-linear-gradient(closest-side at 50% 55%, #444444 5%, #000000 110%);
+font-size: 20px;
+}
+
+li {
+    display: inline;
+    margin: 0 12px 0px 12px;
+    text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87, 0 0 0.2em #F87;
+}
+
+#section {
+    color: #990000;
+    text-shadow: 0 0 0.4em #F87, 0 0 0.2em #F87, 0 0 0.2em #F87
+}
+
+#k {
+  float:right;
+}
+
+h2 {
+    #color: 800000;
+    #background-color: 999966;
+    font-size: 55px;
+    text-align: center;
+    padding-right: 1px;
+    padding-left: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 70px;
+    #margin-bottom: -10px;
+    
+    #word-spacing: 30px;
+}
+
+h3 {
+    #position: fixed;
+    margin-left: 300px; 
+    margin-right: 300px;
+    top: 175px;
+    left: 31%;
+    #width: 500px;
+    #width: 70%;
+    border-style: solid;
+    border-width: 5px;
+}
+
+h4{
+	font-size: 25px;
+	border-radius: 10px;
+	border-radius: 15px;
+	text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87, 0 0 0.2em #F87;
+	color: #990000;
+
+}
+
+form{
+  margin-left:80px;
+  font-size: 20px;
+  margin-right:80px;
+}
+
+input{
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+margin-top: 25px;
+}
+
+input[type="submit"]{
+  width: 130px;
+  height: 30px;
+  font-size: 15px;
+  margin-left: 100px;
+  margin-top: 25px;
+  border-radius: 15px;
+  color: #990000;
+}
+
+div {
+    font-family: "Times New Roman";
+	text-align: center;
+	color: #999999;
+	border-radius: 15px;
+	#text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87, 0 0 0.2em #F87;
+
+}
+  
+
